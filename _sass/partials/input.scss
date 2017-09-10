@@ -1,0 +1,25 @@
+
+// need to come up with some general input logics 
+//  and styles
+
+// eve will do
+
+@import "input_reset";
+
+input{
+	border-radius:3px;
+	border-width:1.5px;
+	background-color:transparent;
+	border-style:solid;
+	text-align:center;
+	letter-spacing:2px;
+}
+
+
+input[type='password']{
+
+	border-color:$bgr-dark;
+	color:$washed_yellow;
+	padding:5px 10px 5px 10px;
+	width:20%;
+}

@@ -1,0 +1,111 @@
+$desktop_bar_height:35px;
+
+
+#desktop{
+	width:100%;
+	height:calc(100vh - 35px);
+	z-index: 0;
+	background-image:url('../_assets/textures/stardust_darker.png');
+	position: relative;
+	padding:5px;
+	.desktop_app{
+		width: 90px;
+		height: 80px;
+		text-align: center;
+		@extend .flex-column;
+		i{
+			font-size: 40px;
+
+		}
+		position: absolute;
+
+	}
+	.desktop_app:hover{
+		background-color: rgba($shadow_green,0.3);
+		outline: 2px solid rgba($shadow_green,0.8);
+	}
+	.desktop_app_focus{
+		background-color: rgba($shadow_green,0.6)!important;
+		outline: 2px solid rgba($shadow_green,1)!important;
+	}
+	.terminal_app{
+		top:370px;
+		left: 0px;
+
+	}
+	.trash_app{
+		right:10px;
+		bottom:10px;
+	}
+}
+
+#desktop_bar{
+	width:100%;
+	height:$desktop_bar_height;
+	position: absolute;
+	z-index: 98;
+	bottom:0;
+	left:0;
+	background-color:rgba($shadow_green,0.8);
+	color:white;
+	display:flex;
+	.icons{
+		width: 60%;
+		display: flex;
+		align-items:center;
+		justify-content: flex-start;
+		.icon{
+			width: 45px;
+			margin:0px 3px 0px 3px;
+			height: $desktop_bar_height;
+			@extend .flex;
+			img{
+				width: 50%;
+			}
+			i{
+				color:$yellow;
+			}
+			font-size: 20px;
+		}
+		.active{
+			background-color: rgba($shadow_green,0.9);
+		}
+		.icon_app{
+			color:white;
+			border-bottom: 2px solid white;
+		}
+	}
+	.utilities{
+		width: 40%;
+		height: 100%;
+		display: flex;
+		align-items:center;
+		justify-content: flex-end;
+		padding-right:10px;
+		color:white;
+		i{
+			margin:0px 6px 0px 6px;
+		}
+		p{
+			margin:0px 10px 0px 20px;
+			
+		}
+	}
+}
+
+
+
+
+.overlay_screen{
+	position: fixed;
+	width:100vw;
+	height:100vh;
+	top:0;
+	left:0;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.6));
+    background-size: 100% 0.2rem;
+    background-repeat:repeat;
+    opacity: 0.4;
+    pointer-events: none;// clicking throught the div
+    z-index: 99;
+}

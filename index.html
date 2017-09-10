@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Eve</title>
+  <link rel="shortcut icon" type="image/png" href="_assets/master_favicon_thumbnail.png"/>
+  <link rel="stylesheet" href="css/eve.css">
+  <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+
+
+  <div id="desktop">
+  
+    <!-- icons -->
+    <!-- so far only two, the terminal and the recycle bin -->
+
+    <div class="desktop_app terminal_app"><i class="ion-android-wifi"></i>Log in</div>
+    <div class="desktop_app trash_app"><i class="ion-trash-b"></i>Recycle Bin</div>
+    <div class="desktop_app wifi_img"><i class="ion-android-image"></i>02fgH21.png<img class="png"></02fgH21></div>
+
+  </div>
+  <div id="desktop_bar">
+      
+      <div class="icons">
+        <div class="icon"><img src="_assets/icon_misma_desktop.png"></div>
+        <div class="icon"><i class="ion-ios-color-filter"></i></div>
+        <div class="icon"><i class="ion-ios-eye"></i></div>
+        <div class="icon"><i class="ion-android-radio-button-on"></i></div>
+        <!-- coresponding icons for images -->
+        <div class="icon icon_app active" data-target-file="file_01"><i class="ion-android-image"></i></div>
+        <div class="icon icon_app active" data-target-file="file_02"><i class="ion-android-film"></i></div>
+        <div class="icon icon_app active" data-target-file="file_03"><i class="ion-android-image"></i></div>
+
+        <!--  icon for terminal -->
+      </div>
+      <div class="utilities">
+        
+          <i class="ion-network"></i>
+          <i class="ion-volume-medium"></i>
+          <i class="ion-battery-charging"></i>
+          <i class="ion-search"></i>
+          <p id="utilities_time">3:11PM</p>
+          <i class="ion-power"></i>
+      </div>
+  </div>
+
+	<div class="overlay_screen"></div>
+
+
+  <div id="terminal">
+
+    <div id="terminal_preloader">
+        <div class="container">
+          <div class="bar"></div>
+        </div>
+    </div>
+
+
+    <div id="terminal_login">
+      <img id="login_logo" src="_assets/misma_logo_horizontal.png" alt="logo logo_misma mobile">
+
+      <p id="login_p">Secure Terminal Login</p>
+
+      <input  id="login_input"type="password">
+
+      <p id="login_text">
+        Use of this terminal is covered under the Misma Sinergetics Employee
+        and Company Security Act. Unauthorized use of this terminal will result
+        in action as detailed under Article 12, Paragraph 7, Section D of the
+        aforementioned act. Thank you for helping us help you help us all.
+      </p>
+      
+    </div>
+    
+  </div>
+
+
+
+
+
+  <!-- page 1 -->
+	<div class="page file_01" data-target-icon="file_01">
+    <div class="header">
+      <button class="file_icon"><i class="ion-android-image"></i></button>
+      <p class="file_name">02fgH21.png</p>
+      <div class="window_actions">
+          <button class="btn btn_minify"><i class="ion-android-remove"></i></button>
+          <button class="btn btn_expand"><i class="ion-android-checkbox-outline-blank"></i></button>
+          <button class="btn btn_close"><i class="ion-android-close"></i></button>
+      </div>
+    </div>
+    <div class="content">
+      <img src="_assets/_files/file_02.png">
+    </div>
+	</div>
+  <!-- page 2 -->
+  <div class="page file_02" data-target-icon="file_02">
+    <div class="header">
+      <button class="file_icon"><i class="ion-android-film"></i></button>
+      <p class="file_name">D3_20(1_99_4).m4v</p>
+      <div class="window_actions">
+          <button class="btn btn_minify"><i class="ion-android-remove"></i></button>
+          <button class="btn btn_expand"><i class="ion-android-checkbox-outline-blank"></i></button>
+          <button class="btn btn_close"><i class="ion-android-close"></i></button>
+      </div>
+    </div>
+    <div class="content">
+      <img src="_assets/_files/file_05.gif">
+    </div>
+  </div>
+  <!-- page 3 -->
+  <div class="page file_03" data-target-icon="file_03">
+    <div class="header">
+      <button class="file_icon"><i class="ion-android-image"></i></button>
+      <p class="file_name">screenshot_Annex_20.jpg</p>
+      <div class="window_actions">
+          <button class="btn btn_minify"><i class="ion-android-remove"></i></button>
+          <button class="btn btn_expand"><i class="ion-android-checkbox-outline-blank"></i></button>
+          <button class="btn btn_close"><i class="ion-android-close"></i></button>
+      </div>
+    </div>
+    <div class="content">
+      <img src="_assets/_files/file_04.jpg">
+    </div>
+  </div>
+
+
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <!--CDN link for  TweenMax-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/EaselPlugin.min.js"></script> -->
+  <!-- only if you need to tween extra properties -->
+
+
+  <script src="scripts/desktop.js"></script>
+	<script src="scripts/page.js"></script>
+</body>
+</html>
