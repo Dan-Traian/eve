@@ -48,7 +48,10 @@ for(var i=0;i<desktop_apps.length;i++){
 
     
 }
-
+$("#wifi_icon").click(function(){
+    console.log("x");
+    new TimelineMax().fromTo($("#wifi_panel"),0.4,{opacity:0,bottom:"10px",right:0},{opacity:1,bottom:"35px",right:0});
+});
 
 
 function show_terminal_login(){

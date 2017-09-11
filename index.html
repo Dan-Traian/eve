@@ -36,17 +36,31 @@
         <!--  icon for terminal -->
       </div>
       <div class="utilities">
-        
-          <i class="ion-network"></i>
-          <i class="ion-volume-medium"></i>
-          <i class="ion-battery-charging"></i>
-          <i class="ion-search"></i>
-          <p id="utilities_time">3:11PM</p>
-          <i class="ion-power"></i>
+          <div class="utilities_icon" id="wifi_icon"><i class="ion-wifi""></i></div>
+          <div class="utilities_icon"><i class="ion-volume-medium"></i></div>
+          <div class="utilities_icon"><i class="ion-battery-charging"></i></div>
+          <div class="utilities_icon"><i class="ion-search"></i></div>
+          <div class="utilities_icon"><p id="utilities_time">3:11PM</p></div>
+          <div class="utilities_icon"><i class="ion-power"></i></div>
       </div>
   </div>
 
-	<div class="overlay_screen"></div>
+<!--  -->
+<!-- wifi connection -->
+<div id="wifi_panel">
+  <a href="#">NetWork Connections and Settings</a>
+  <div class="connection">
+    <i class="ion-wifi"></i> 
+    <p>Get of my LAN</p>
+    <input type="password">
+  </div>
+  <div class="connection"><i class="ion-wifi"></i> <p>Titanic Syncing</p></div>
+  <div class="connection" id="working_wifi" ><i class="ion-wifi"></i> <p>(N3).WIFI<sup>TM</sup>\</p></div>
+</div>
+
+
+  <div class="overlay_screen"></div>
+	<div class="overlay_person"></div>
 
 
   <div id="terminal">
@@ -63,7 +77,7 @@
 
       <p id="login_p">Secure Terminal Login</p>
 
-      <input  id="login_input"type="password">
+      <input  id="login_input" type="password" autofocus="" >
 
       <p id="login_text">
         Use of this terminal is covered under the Misma Sinergetics Employee
@@ -138,6 +152,7 @@
 
 
   <script src="scripts/desktop.js"></script>
-	<script src="scripts/page.js"></script>
+  <script src="scripts/page.js"></script>
+	<script src="scripts/script.js"></script>
 </body>
 </html>

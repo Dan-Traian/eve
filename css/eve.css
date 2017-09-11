@@ -401,7 +401,7 @@ template {
 * {
   font-family: 'Inconsolata', monospace; }
 
-.flex, .page .header .file_icon, .page .content, #terminal #terminal_preloader, #desktop_bar .icons .icon {
+.flex, .page .header .file_icon, .page .content, #terminal #terminal_preloader, #desktop_bar .icons .icon, #desktop_bar .utilities .utilities_icon, #wifi_panel a, #wifi_panel .connection {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -415,6 +415,49 @@ template {
 @keyframes terminal_load {
   to {
     left: 0%; } }
+@keyframes flicker {
+  0% {
+    opacity: 0.47158; }
+  5% {
+    opacity: 0.19243; }
+  10% {
+    opacity: 0.48933; }
+  15% {
+    opacity: 0.83337; }
+  20% {
+    opacity: 0.78001; }
+  25% {
+    opacity: 0.3034; }
+  30% {
+    opacity: 0.25772; }
+  35% {
+    opacity: 0.90647; }
+  40% {
+    opacity: 0.93936; }
+  45% {
+    opacity: 0.70876; }
+  50% {
+    opacity: 0.35464; }
+  55% {
+    opacity: 0.87368; }
+  60% {
+    opacity: 0.08612; }
+  65% {
+    opacity: 0.18754; }
+  70% {
+    opacity: 0.64423; }
+  75% {
+    opacity: 0.18136; }
+  80% {
+    opacity: 0.74121; }
+  85% {
+    opacity: 0.68434; }
+  90% {
+    opacity: 0.08842; }
+  95% {
+    opacity: 0.39067; }
+  100% {
+    opacity: 0.9004; } }
 /* ----------------------------------------------------------------------------------------------------
 Super Form Reset
 A couple of things to watch out for:
@@ -745,10 +788,44 @@ html, body {
     justify-content: flex-end;
     padding-right: 10px;
     color: white; }
-    #desktop_bar .utilities i {
-      margin: 0px 6px 0px 6px; }
-    #desktop_bar .utilities p {
-      margin: 0px 10px 0px 20px; }
+    #desktop_bar .utilities .utilities_icon {
+      min-width: 30px;
+      height: 100%;
+      cursor: pointer; }
+      #desktop_bar .utilities .utilities_icon i {
+        margin: 0px 6px 0px 6px; }
+      #desktop_bar .utilities .utilities_icon #utilities_time {
+        margin: 0px 20px 0px 40px; }
+    #desktop_bar .utilities .utilities_icon:hover {
+      background-color: rgba(74, 70, 67, 0.9); }
+
+#wifi_panel {
+  width: 20vw;
+  height: 50vh;
+  position: absolute;
+  right: -20vw;
+  opacity: 0;
+  bottom: 35px;
+  background-color: rgba(74, 70, 67, 0.8);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column; }
+  #wifi_panel a {
+    width: 100%;
+    color: white;
+    text-decoration: underline;
+    height: 50px; }
+  #wifi_panel .connection {
+    width: 100%;
+    min-height: 50px;
+    margin: 5px 0px;
+    justify-content: flex-start;
+    border-bottom: 1px solid #2f2d2b;
+    cursor: pointer; }
+    #wifi_panel .connection i {
+      margin: 10px; }
+  #wifi_panel .connection:hover {
+    background-color: rgba(74, 70, 67, 0.9); }
 
 .overlay_screen {
   position: fixed;
@@ -756,11 +833,36 @@ html, body {
   height: 100vh;
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.6));
-  background-size: 100% 0.2rem;
-  background-repeat: repeat;
-  opacity: 0.4;
   pointer-events: none;
-  z-index: 99; }
+  z-index: 99;
+  opacity: 0.8; }
+
+.overlay_screen {
+  overflow: hidden; }
+  .overlay_screen::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite; }
+  .overlay_screen::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; }
 
 /*# sourceMappingURL=eve.css.map */
