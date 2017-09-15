@@ -401,12 +401,12 @@ template {
 * {
   font-family: 'Inconsolata', monospace; }
 
-.flex, .page .header .file_icon, .page .content, #terminal #terminal_preloader, #desktop_bar .icons .icon, #desktop_bar .utilities .utilities_icon, #wifi_panel a, #wifi_panel .connection {
+.flex, .page .header .file_icon, .page .content, #terminal #terminal_preloader, #desktop_bar .icons .icon, #desktop_bar .utilities .utilities_icon, #wifi_panel a {
   display: flex;
   justify-content: center;
   align-items: center; }
 
-.flex-column, #terminal #terminal_login, #desktop .desktop_app {
+.flex-column, #terminal #terminal_login, #desktop .desktop_app, #wifi_panel .connection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -417,47 +417,47 @@ template {
     left: 0%; } }
 @keyframes flicker {
   0% {
-    opacity: 0.47158; }
+    opacity: 0.56146; }
   5% {
-    opacity: 0.19243; }
+    opacity: 0.64126; }
   10% {
-    opacity: 0.48933; }
+    opacity: 0.41103; }
   15% {
-    opacity: 0.83337; }
+    opacity: 0.74473; }
   20% {
-    opacity: 0.78001; }
+    opacity: 0.97514; }
   25% {
-    opacity: 0.3034; }
+    opacity: 0.29918; }
   30% {
-    opacity: 0.25772; }
+    opacity: 0.50466; }
   35% {
-    opacity: 0.90647; }
+    opacity: 0.87321; }
   40% {
-    opacity: 0.93936; }
+    opacity: 0.68123; }
   45% {
-    opacity: 0.70876; }
+    opacity: 0.32548; }
   50% {
-    opacity: 0.35464; }
+    opacity: 0.21424; }
   55% {
-    opacity: 0.87368; }
+    opacity: 0.61388; }
   60% {
-    opacity: 0.08612; }
+    opacity: 0.00585; }
   65% {
-    opacity: 0.18754; }
+    opacity: 0.76197; }
   70% {
-    opacity: 0.64423; }
+    opacity: 0.95866; }
   75% {
-    opacity: 0.18136; }
+    opacity: 0.1499; }
   80% {
-    opacity: 0.74121; }
+    opacity: 0.42382; }
   85% {
-    opacity: 0.68434; }
+    opacity: 0.92674; }
   90% {
-    opacity: 0.08842; }
+    opacity: 0.63165; }
   95% {
-    opacity: 0.39067; }
+    opacity: 0.56729; }
   100% {
-    opacity: 0.9004; } }
+    opacity: 0.01006; } }
 /* ----------------------------------------------------------------------------------------------------
 Super Form Reset
 A couple of things to watch out for:

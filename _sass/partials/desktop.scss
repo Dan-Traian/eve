@@ -125,7 +125,7 @@ $desktop_bar_height:35px;
 		width: 100%;
 		min-height: 50px;
 		margin: 5px 0px;
-		@extend .flex;
+		@extend .flex-column;
 		justify-content: flex-start;
 		border-bottom:1px solid darken($shadow_green,10%);
 		cursor: pointer;
