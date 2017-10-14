@@ -5,55 +5,38 @@ $( ".desktop_app" ).draggable(
         grid: [ 1,1 ],
         containment: "#desktop",
     });
-
-
 // click on desktop icons
 
+$(".desktop_app").click(function(){
+    $(".desktop_app").removeClass("desktop_app_focus");
+    $(this).addClass("desktop_app_focus");
 
-var desktop_apps=document.querySelectorAll(".desktop_app");
-for(var i=0;i<desktop_apps.length;i++){
-    desktop_apps[i].addEventListener("click",function(){
-    	console.log("X");
-    	$(".desktop_app").removeClass("desktop_app_focus");
-        this.classList.add("desktop_app_focus");
+    if($(this).hasClass("wifi_img") && $(".file_01").css("display") == "none"){
+        console.log("show wifi hint");
+        $(".file_01").css("display","block");
+        var s_icon_app='<div class="icon icon_app active" data-target-file="file_01"><i class="ion-android-image"></i></div>';
+        document.querySelector("#desktop_bar .icons").insertAdjacentHTML("beforeend", s_icon_app);
+        // add event listenr to last app added
 
-
-        if($(this).hasClass("wifi_img") && $(".file_01").css("display") == "none"){
-            console.log("show wifi");
-            $(".file_01").css("display","block");
-            var s_icon_app='<div class="icon icon_app active" data-target-file="file_01"><i class="ion-android-image"></i></div>';
-            document.querySelector("#desktop_bar .icons").insertAdjacentHTML("beforeend", s_icon_app);
-
-            // add event listenr to last app added
-
-            $("#desktop_bar .icons .icon:last-child").click(function(){
-                // add active class
-                this.classList.add("active");
-                // get file target from data_target_file
-                var s_data_target_file = this.getAttribute("data-target-file");
-                var s_file_selector = "[data-target-icon='"+s_data_target_file+"']";
-                var target_file = document.querySelector(s_file_selector);
-                // console.log(target_file);
-                
-                // display the target file
-                target_file.style.display="block";
-            });
-        }
-        if($(this).hasClass("terminal_app")){
-            console.log("show terminal");
-            $("#terminal").css("display","block");
-            show_terminal_login();
-        }
-    });
-
-    
-}
-$("#wifi_icon").click(function(){
-    console.log("x");
-    new TimelineMax().fromTo($("#wifi_panel"),0.4,{opacity:0,bottom:"10px",right:0},{opacity:1,bottom:"35px",right:0});
+        $("#desktop_bar .icons .icon:last-child").click(function(){
+            // add active class
+            this.classList.add("active");
+            // get file target from data_target_file
+            var s_data_target_file = this.getAttribute("data-target-file");
+            var s_file_selector = "[data-target-icon='"+s_data_target_file+"']";
+            var target_file = document.querySelector(s_file_selector);
+            // console.log(target_file);
+            
+            // display the target file
+            target_file.style.display="block";
+        });
+    }
+    if($(this).hasClass("terminal_app")){
+        console.log("show terminal");
+        $("#terminal").css("display","block");
+        show_terminal_login();
+    }
 });
-
-
 function show_terminal_login(){
     console.log("animate intro");
     new TimelineMax()
@@ -71,28 +54,32 @@ function show_terminal_login(){
 
         .staggerFromTo($("#terminal_login p"), 0.5, {opacity:0}, {opacity:1},0.3)
         // .addCallback(show_instructions,"+=2")
-        .timeScale(1);
+        .timeScale(10);
 }
+// show_lorn();
+
+function show_lorn(){
+    
+    lorn_video.addEventListener('loadedmetadata', function() {
+        console.log("i called lorn");
 
 
+        $("#desktop_container").addClass("show_lorn");
+        $("#lorn_container").css("display","block");
 
-(function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    today="";
-    if(s%2==0){
-        today =h + " " + m;
-    }
-    else{
-        today =h + ":" + m;
-    }
-    document.getElementById('utilities_time').innerHTML =today;
-    var t = setTimeout(startTime,1000);
-})();
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
+
+        this.currentTime = 90;
+        lorn_video.volume=0;    
+        lorn_video.play();
+
+        $(lorn_video).animate({volume: 0.5}, 50000);
+        
+        new TimelineMax()
+            .delay(17)
+            .fromTo($("#lorn_container .screen"), 1 ,{opacity:0},{opacity:1})
+            .fromTo($("#lorn_video"),3,{opacity:0},{opacity:1},"+=6")
+            // .addCallback(show_instructions,"+=2")
+            .timeScale(1);
+    }, false);
+
+};

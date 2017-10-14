@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700');
+// usage
+* {
+    font-family: 'Inconsolata', monospace;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+html,body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    cursor: url('../_assets/cursor.png'), auto;	
+
+
+}
+*{
+    cursor: url('../_assets/cursor.png'), auto;	
+}
+input,input:focus{
+    outline:none;
+}
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@keyframes terminal_load {
+    to {
+        left: 0%;
+    }
+}
+button{
+    border:none;
+    outline: none;
+    background-color: rgba(0,0,0,0);
+}
+@keyframes flicker {
+    $steps:20;
+    @for $i from 0 through $steps {
+        #{percentage($i*(1/$steps))} {
+            opacity: random();
+        }
+    }
+}

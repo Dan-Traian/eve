@@ -1,0 +1,186 @@
+$desktop_bar_height:35px;
+
+body{
+    -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 1000px;
+}
+
+#desktop_container{
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+    background-color:$green_dark;
+    color:$washed_yellow;
+
+    #desktop_screen{
+        @import "_page";
+
+        width:100%;
+        height:calc(100vh - #{$desktop_bar_height});
+        z-index: 0;
+        background-image:url('../_assets/textures/stardust_darker.png');
+        position: relative;
+        padding:5px;
+        .desktop_app{
+            width: 90px;
+            height: 80px;
+            text-align: center;
+            @extend .flex-column;
+            i{
+                font-size: 40px;
+    
+            }
+            position: absolute;
+    
+        }
+        .desktop_app:hover{
+            background-color: rgba($shadow_green,0.3);
+            outline: 2px solid rgba($shadow_green,0.8);
+        }
+        .desktop_app_focus{
+            background-color: rgba($shadow_green,0.6)!important;
+            outline: 2px solid rgba($shadow_green,1)!important;
+        }
+        .terminal_app{
+            top:370px;
+            left: 0px;
+    
+        }
+        .trash_app{
+            right:10px;
+            bottom:10px;
+        }
+    }
+    
+    #desktop_bar{
+        width:100%;
+        height:$desktop_bar_height;
+        position: absolute;
+        z-index: 98;
+        bottom:0;
+        left:0;
+        background-color:rgba($shadow_green,0.8);
+        color:white;
+        display:flex;
+        .icons{
+            width: 60%;
+            display: flex;
+            align-items:center;
+            justify-content: flex-start;
+            .icon{
+                width: 45px;
+                margin:0px 3px 0px 3px;
+                height: $desktop_bar_height;
+                @extend .flex;
+                img{
+                    width: 50%;
+                }
+                i{
+                    color:$yellow;
+                }
+                font-size: 20px;
+            }
+            .active{
+                background-color: rgba($shadow_green,0.9);
+            }
+            .icon_app{
+                color:white;
+                border-bottom: 2px solid white;
+            }
+        }
+        .utilities{
+            width: 40%;
+            height: 100%;
+            display: flex;
+            align-items:center;
+            justify-content: flex-end;
+            padding-right:10px;
+            color:white;
+            .utilities_icon{
+                min-width: 30px;
+                height: 100%;
+                cursor:pointer;
+                @extend .flex;
+                    i{
+                        margin:0px 6px 0px 6px;
+                    }
+                    #utilities_time{
+                        margin:0px 20px 0px 40px;
+                    }
+            }
+            .utilities_icon:hover{
+                background-color: rgba($shadow_green,0.9);
+            }
+    
+        }
+    }
+    
+
+    
+    $screen-background:#121010;
+    .overlay_screen{
+        position: absolute;
+        width:100vw;
+        height:100vh;
+        top:0;
+        left:0;
+        pointer-events: none;// clicking throught the div
+        z-index: 99;
+       opacity: 0.8;
+    }
+    
+    
+    .overlay_screen{
+      overflow:hidden;
+    
+    
+      // flicker
+      &::after{
+        content:" ";
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        background:transparentize($screen-background,0.9);
+        opacity:0;
+        z-index:2;
+        pointer-events:none;
+        animation:flicker 0.15s infinite;
+      }
+      // scanlines
+      &::before{
+        content:" ";
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        background:linear-gradient(transparentize($screen-background,1) 50%, transparentize(darken($screen-background,10),0.75) 50%), linear-gradient(90deg,transparentize(#ff0000,0.94),transparentize(#00ff00,0.98),transparentize(#0000ff,0.94));
+        z-index:2;
+        background-size:100% 2px, 3px 100%;
+        pointer-events:none;
+      }
+    }
+    @import '_terminal';
+    
+}
+.show_lorn{
+    transform-origin:center;
+    animation: lorn_video 20s forwards ease-in;
+    -webkit-transform-style: preserve-3d;
+}
+@keyframes lorn_video {
+    0%{
+        transform: translate(0px, 0px) translateZ(0px) scale(1,1);
+    }
+    100%{
+        transform: translate(0px, 0px) translateZ(1100px) scale(1,1);
+    }    
+}
+
