@@ -4,7 +4,23 @@ var bot = new RiveScript();
 // Load a list of files all at once (the best alternative to loadDirectory
 // for the web!)
 bot.loadFile([
-	"scripts/eve/brain/begin.rive",
+	"scripts/eve/brain/begin.rs",
+	"scripts/eve/brain/eve-skeptic.rs",
+	"scripts/eve/brain/chat-lingo.rs",
+	"scripts/eve/brain/clients.rs",
+	"scripts/eve/brain/colors.rs",
+	"scripts/eve/brain/emoticons.rs",
+	"scripts/eve/brain/eve-skeptic.rs",
+	"scripts/eve/brain/eve-welcome.rs",
+	"scripts/eve/brain/friendly.rs",
+	"scripts/eve/brain/humor.rs",
+	"scripts/eve/brain/insults.rs",
+	"scripts/eve/brain/logic.rs",
+	"scripts/eve/brain/myself.rs",
+	"scripts/eve/brain/plugins.rs",
+	"scripts/eve/brain/prefix-suffix.rs",
+	"scripts/eve/brain/star.rs",
+	"scripts/eve/brain/yesno.rs",
 ], loading_done, loading_error);
 
 // All file loading operations are asynchronous, so you need handlers

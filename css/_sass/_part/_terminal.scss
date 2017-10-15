@@ -1,3 +1,9 @@
+
+$console_color: #14fdce;
+$console_color_user: #0b9476;
+$console_bg: #031e11;
+
+
 #terminal {
     width: 95%;
     height: 90%;
@@ -6,60 +12,197 @@
     left: 2.5vw;
     z-index: 20;
     display: none;
-    user-select: none;
-    background-color: $screen-background;
-    border-radius: 5px;
-    #terminal_preloader {
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        @extend .flex;
-        .container {
-            width: 30vw;
-            height: 4px;
-            background-color: darken($bgr-dark, 10%);
-            overflow: hidden;
-            border-radius: 2px;
-            .bar {
-                width: 100%;
-                height: 100%;
-                position: relative;
-                background-color: $yellow;
-                left: -99%; // animation :terminal_load 4s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    border-radius: 6px;
+    background-color:lighten(#292929,3%);
+    border:1px solid darken(#292929,20%);
+    border-top:1px solid lighten(#292929,20%);
+
+    box-shadow: 0px 10px 20px 10px rgba(0,0,0,0.25);
+    ::selection {
+        background-color: $console_color;
+        color: $console_bg;
+    }
+    .topbar{
+        width:100%;
+        align-items: center;
+        height: 60px;
+        color: $bgr-grey;
+        background-color: #292929;
+
+        .actions{
+            width:100%;
+            padding: 5px 10px;
+            height:50%;
+            display: flex;
+            justify-content: space-between;
+            p{
+                i{ 
+                    margin:0px 10px;
+                    font-size: 0.7em;
+                }
             }
         }
+        .menu{
+            width:100%;
+            height: 50%;            
+            padding: 5px 10px;
+            display: flex;
+            p{
+                margin-right: 30px;
+            } 
+        }
     }
-    #terminal_login {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        position: absolute;
-        top: 0;
-        @extend .flex-column;
-        * {
+    .content{
+        width:100%;
+        height: calc( 100% - 70px);
+        #terminal_preloader {
+            width: 100%;
+            height: 100%;
             opacity: 0;
+            @extend .flex;
+            .container {
+                width: 30vw;
+                height: 4px;
+                background-color: darken($console_bg, 10%);
+                overflow: hidden;
+                border-radius: 2px;
+                .bar {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    background-color: $yellow;
+                    left: -99%; // animation :terminal_load 4s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+                }
+            }
         }
-        #login_logo {
-            width: 30%;
-            user-select: none;
+        #terminal_login {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            @extend .flex-column;
+            .misma_logo {
+                width: 30%;
+            }
+            #login_input {
+                margin: 20vh 0vh 5vh 0vh;
+            }
+            p{
+                width: 60%;
+                letter-spacing: 2px;
+                line-height: 1.2;
+                font-size: 1.1em;
+                text-align: center;
+                color: $bgr-dark;
+                user-select: none;
+            }
+            p:first-child {
+                margin-top: 20px;
+            }
+        }
+        #rivescript{
+            width: 100%;
+            height: 100%;
+            display: none;
             position: relative;
-            top: 25vh;
+            #conversation{
+                width: 100%;
+                height: calc(100% - 30px);
+                overflow-y:scroll;
+                padding: 4px;
+                padding-bottom:100px;
+                .conv_element{
+                    width:100%;
+                    display: flex;
+                    align-items: center;
+                    color: $console_color;
+                    &:nth-child(even){
+                        background-color: transparentize($console_bg,0.91);
+                    }
+                    .index{
+                        width: 30px;
+                        height: 30px;
+                        @extend .flex;
+                        color:darken($bgr-grey, 20%);
+                        margin-right: 10px;
+                    }
+                    span{
+                        color:$console_color;
+                        margin-right: 10px;                
+                    }
+                    .content{
+                        min-width: 70%;
+                        color:lighten($bgr-grey, 20%);
+                    }
+        
+                }
+
+            }
+            .question{
+                position: absolute;
+                bottom: 0;
+                left: 20px;
+                width:100%;
+                display: flex;
+                align-items: center;
+                p{
+                    color: $bgr-grey;
+                    margin-right: 10px;
+                    span{
+                        color:$console_color;
+                    }
+                }
+                input{
+                    font-size:1em;
+                    min-width: 60%;
+                    border:none;
+                    color:$console_color;
+                }
+    
+            }
+            #logo{
+                position: absolute;
+                top:0;
+                right: 0;
+                text-align: left;
+                width: 50vw;
+                height: auto;
+                font-size: 0.2em;
+                color:white;
+            }
+            
         }
-        #login_input {
-            margin: 20vh 0vh 5vh 0vh;
-        }
-        #login_text,
-        #login_p {
-            width: 60%;
-            letter-spacing: 2px;
-            line-height: 1.2;
-            font-size: 1.1em;
-            text-align: center;
-            color: $bgr-dark;
-            user-select: none;
-        }
-        #login_p {
-            margin-top: 20px;
-        }
+       #glitch{
+           width:100%;
+           height: 100%;
+           overflow: hidden;
+           position: relative;
+           @extend .flex;
+           display: none;
+           span{
+               text-align: center;
+               color:white;
+               animation: glitch 3s infinite alternate;
+           }
+           &::before {
+               content: "";
+               display: inline-block;
+               vertical-align: middle;
+               height: 100%;
+           }
+           
+           &::after {
+               content: "";
+               display: block;
+               position: absolute;
+               left: 0;
+               right: 0;
+               background: url(http://api.thumbr.it/whitenoise-361x370.png?background=000000ff&noise=ffffff&density=61&opacity=40);
+               -moz-animation: bar 0.5s infinite;
+               -webkit-animation: bar 0.5s infinite;
+               animation: bar 0.5s infinite;
+           }
+       }
     }
+
 }

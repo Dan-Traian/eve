@@ -11,16 +11,11 @@ html,body{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-
-    cursor: url('../_assets/cursor.png'), auto;	
-
-
 }
-*{
-    cursor: url('../_assets/cursor.png'), auto;	
-}
+
 input,input:focus{
     outline:none;
+    background: transparent;
 }
 .flex {
     display: flex;
@@ -35,21 +30,29 @@ input,input:focus{
     flex-direction: column;
 }
 
-@keyframes terminal_load {
-    to {
-        left: 0%;
-    }
-}
+
 button{
     border:none;
     outline: none;
     background-color: rgba(0,0,0,0);
 }
-@keyframes flicker {
-    $steps:20;
-    @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-            opacity: random();
-        }
-    }
-}
+
+
+
+ ::-webkit-scrollbar-track
+ {
+     opacity:0;
+     background-color: rgba(0,0,0,0);
+ }
+ 
+ ::-webkit-scrollbar
+ {
+     width: 5px;
+     background-color:rgba(0,0,0,0);	
+ }
+ ::-webkit-scrollbar-thumb
+ {
+     border-radius:3px;
+     background-color: white;
+ }
+ 

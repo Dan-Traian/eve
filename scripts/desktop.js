@@ -39,47 +39,146 @@ $(".desktop_app").click(function(){
 });
 function show_terminal_login(){
     console.log("animate intro");
+    $("#glitch").css("display","none");
+    $("#terminal_preloader").css("display","flex");
+    $("#terminal_login").css("display","none");
     new TimelineMax()
         .delay(1)
         .to($("#terminal_preloader"), 1 ,{opacity:1})
         .delay(1)
         .to($("#terminal_preloader .container .bar"), 4,{ease: Power2.easeInOut,left:0})
         .delay(1)
-        .fromTo($("#terminal_preloader .container"), 0.5, {opacity:1}, {opacity:0})
-        .fromTo($("#login_logo"), 3, {opacity:0}, {opacity:1})
-        .to($("#login_logo"), 1,{opacity:0})
-        .to($("#login_logo"), 0.1, {top:0})
-        .fromTo($("#login_input"), 0.5, {opacity:0}, {opacity:1})
-        .to($("#login_logo"), 1,{opacity:1})
-
-        .staggerFromTo($("#terminal_login p"), 0.5, {opacity:0}, {opacity:1},0.3)
+        .fromTo($("#terminal_preloader"), 0.5, {opacity:1}, {opacity:0})
+        .addCallback(function(){
+            $("#terminal_preloader").css("display","none");
+            $("#terminal_login").css("display","flex");
+        })
+        .fromTo($(" #terminal_login"), 1,{opacity:0},{opacity:1})
         // .addCallback(show_instructions,"+=2")
-        .timeScale(10);
+        .timeScale(1);
 }
+$("#glitch span").click(show_terminal_login);
+
+ 
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        console.log('You pressed enter!');
+        if($("#login_input").is(":focus")){
+            var pass = $("#login_input").val();
+            if(pass == "pass1234"){
+                rivescript.style.display="flex";
+                new TimelineMax()
+                    .fromTo($("#terminal_login"), 1,{opacity:1},{opacity:0})
+                    .fromTo($("#rivescript"), 1,{opacity:0},{opacity:1})
+                    .addCallback(function(){
+                        $("#terminal_login").css("display","none");
+                    })
+                    .timeScale(1);
+            }
+            else{
+                $("#glitch").css("display","flex");
+                $("#terminal_login").css("display","none");
+                var static_error = new Audio("../media/static_02.mp3");
+                static_error.volume=0.3;
+                static_error.play();
+            }
+        }
+        if($("#rivescript_input").is(":focus")){
+            addReply();
+        }
+
+    }
+});
+var reply_counter = 0;
+function addReply(){
+    // console.log("i am inputing the passworkd");
+    var user_input = $("#rivescript_input").val();
+    $("#rivescript_input").val("");
+    $("#rivescript_input").focus();
+
+    // console.log(pass);
+    var reply = bot.reply("local-user", user_input);
+
+    reply_counter++;
+    var q = `
+        <div class="conv_element">
+        <div class="index">`+reply_counter+`</div>
+        <span>You</span>
+        <div class="content">
+            <p>`+user_input+`</p>
+        </div>
+    </div>`;
+    reply_counter++;
+    var r = `
+        <div class="conv_element">
+        <div class="index">`+reply_counter+`</div>
+        <span>EVE</span>
+        <div class="content">
+            <p></p>
+        </div>
+    </div>`;    
+    console.log(conversation);
+    conversation.insertAdjacentHTML("beforeend",q);
+    conversation.insertAdjacentHTML("beforeend",r);
+    var index = 0;
+    conversation.scrollTop += 100;
+
+
+    var letter = setInterval(function(){
+   
+        if(index<reply.length){
+            conversation.querySelector(".conv_element:last-child .content p").innerHTML+=reply.charAt(index);
+        }
+        else{
+            clearInterval(letter);
+        }
+        index++;
+    },50);
+    
+    // setTimeout(function() {
+    //     conversation.querySelector(".conv_element:last-child .content p").innerHTML="..";
+    //     setTimeout(function() {
+            
+    //         conversation.querySelector(".conv_element:last-child .content p").innerHTML="...";
+    //         setTimeout(function() {
+    //             conversation.querySelector(".conv_element:last-child .content p").innerHTML=reply;
+    //         }, 1000);
+    //     }, 1000);
+    // }, 1000);
+}
+
+// for testing purposes;
+$("#terminal").css("display","block");
+terminal_preloader.style.display="none";
+terminal_login.style.display="none";
+rivescript.style.display="block";
+rivescript.style.opacity=1;
+
 // show_lorn();
 
 function show_lorn(){
+    // var is_loaded= false;
+    // lorn_video.addEventListener('loadedmetadata', function() {
+    //     is_loaded=true;
+    // }, false);
+    console.log("i called lorn");
+
+
+    $("#desktop_container").addClass("show_lorn");
+    $("#lorn_container").css("display","block");
+
+
+    this.currentTime = 90;
+    lorn_video.volume=0;    
+    lorn_video.play();
+
+    $(lorn_video).animate({volume: 0.5}, 50000);
     
-    lorn_video.addEventListener('loadedmetadata', function() {
-        console.log("i called lorn");
-
-
-        $("#desktop_container").addClass("show_lorn");
-        $("#lorn_container").css("display","block");
-
-
-        this.currentTime = 90;
-        lorn_video.volume=0;    
-        lorn_video.play();
-
-        $(lorn_video).animate({volume: 0.5}, 50000);
-        
-        new TimelineMax()
-            .delay(17)
-            .fromTo($("#lorn_container .screen"), 1 ,{opacity:0},{opacity:1})
-            .fromTo($("#lorn_video"),3,{opacity:0},{opacity:1},"+=6")
-            // .addCallback(show_instructions,"+=2")
-            .timeScale(1);
-    }, false);
+    new TimelineMax()
+        .delay(17)
+        .fromTo($("#lorn_container .screen"), 1 ,{opacity:0},{opacity:1})
+        .fromTo($("#lorn_video"),3,{opacity:0},{opacity:1},"+=6")
+        // .addCallback(show_instructions,"+=2")
+        .timeScale(1);
 
 };
