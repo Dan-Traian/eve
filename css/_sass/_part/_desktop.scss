@@ -6,13 +6,120 @@ body {
     perspective: 1000px;
 }
 
+#draggable_container {
+    position: absolute;
+    top: 0;
+    left: -30vw;
+    width: 160vw;
+    height: 110vh;
+    z-index: -99;
+}
+
+#fluid {
+    width: 100vw;
+    height: 100vh;
+    @extend .flex;
+    background-color: rgb(87, 87, 87);
+    position: relative;
+    .roid {
+        width: 20vw;
+        height: 20vw;
+        background-color: rgb(63, 63, 63);
+        transform-origin: center;
+        transform: rotate(45deg);
+        box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+        @extend .flex;
+        position: relative;
+        top: 0;
+        animation: reposition 4s ease-in forwards;
+        animation-delay: 7s;
+        .dro {
+            width: 5vw;
+            height: 5vw;
+            background-color: lighten(black, 10%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(0, 0);
+            animation: dro 5s ease-in-out forwards;
+            @extend .flex;
+            background-color: white;
+            .dot-parent {
+                width: 10px;
+                height: 10px;
+                transform: rotate(45deg);
+                transform-origin: left;
+                .dot {
+                    position: relative;
+                    top: -2.5px;
+                    left: -2.5px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 5px;
+                    background-color: white;
+                    animation: bleed 5s ease-in-out forwards;
+                    animation-delay: 6s;
+                }
+                @keyframes bleed {
+                    to {
+                        width: 50vw;
+                    }
+                }
+            }
+        }
+        @keyframes dro {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0;
+                box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+            }
+            100% {
+                transform: scale(1, 1);
+                opacity: 1;
+                box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+    .romb_container {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        @extend .flex;
+        .romb {
+            position: relative;
+            width: 0;
+            height: 0;
+            top: -1vw;
+            transform: rotate(45deg);
+            .drogo {
+                width: 0;
+                height: 0;
+                background-color: white;
+                animation: romb 3s ease-in-out forwards;
+                animation-delay: 11s;
+            }
+        }
+        @keyframes romb {
+            to {
+                width: 10vw;
+                height: 10vw;
+            }
+        }
+    }
+    @keyframes reposition {
+        to {
+            top: -50vw;
+        }
+    }
+}
+
 #desktop_container {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     position: relative;
     background-color: $green_dark;
-    background: linear-gradient(to bottom,#5A5454 0%, #333333  100%);
+    background: linear-gradient(to bottom, #5A5454 0%, #333333 100%);
     color: $washed_yellow; // transform-origin: center;
     // transform: scale(0.99,0.97);   
     // border-radius: 30px; 
@@ -76,9 +183,9 @@ body {
             align-items: center;
             justify-content: flex-start;
             .icon {
-                width: 45px;
-                margin: 0px 3px 0px 3px;
+                width: $desktop_bar_height;
                 height: $desktop_bar_height;
+                font-size: 20px;
                 @extend .flex;
                 img {
                     width: 50%;
@@ -86,14 +193,29 @@ body {
                 i {
                     color: $yellow;
                 }
-                font-size: 20px;
+                &:hover {
+                    background-color: rgba(lighten($shadow_green,10%), 0.9);
+                }
             }
             .active {
                 background-color: rgba($shadow_green, 0.9);
             }
             .icon_app {
                 color: white;
-                border-bottom: 2px solid white;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 5px;
+                    top: 0;
+                    width:calc(#{$desktop_bar_height} - 10px);
+                    height:calc(#{$desktop_bar_height} - 2px);
+                    border-bottom: 2px solid white;
+                    &:hover {
+                        left: 0px;
+                        width: $desktop_bar_height;
+                    }
+                }
             }
         }
         .utilities {

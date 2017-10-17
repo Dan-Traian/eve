@@ -104,7 +104,7 @@ function addReply(){
         <div class="conv_element">
         <div class="index">`+reply_counter+`</div>
         <span>You</span>
-        <div class="content">
+        <div class="text">
             <p>`+user_input+`</p>
         </div>
     </div>`;
@@ -113,11 +113,10 @@ function addReply(){
         <div class="conv_element">
         <div class="index">`+reply_counter+`</div>
         <span>EVE</span>
-        <div class="content">
+        <div class="text">
             <p></p>
         </div>
     </div>`;    
-    console.log(conversation);
     conversation.insertAdjacentHTML("beforeend",q);
     conversation.insertAdjacentHTML("beforeend",r);
     var index = 0;
@@ -127,7 +126,7 @@ function addReply(){
     var letter = setInterval(function(){
    
         if(index<reply.length){
-            conversation.querySelector(".conv_element:last-child .content p").innerHTML+=reply.charAt(index);
+            conversation.querySelector(".conv_element:last-child .text p").innerHTML+=reply.charAt(index);
         }
         else{
             clearInterval(letter);
@@ -180,5 +179,4 @@ function show_lorn(){
         .fromTo($("#lorn_video"),3,{opacity:0},{opacity:1},"+=6")
         // .addCallback(show_instructions,"+=2")
         .timeScale(1);
-
 };

@@ -1,0 +1,21 @@
+
+
+
+new features : 
+
+to be fixed or worked on:
+    - the page is getting dispaly none, while the icon in the desktop bar get removed
+    - add ascii code to the terminal
+    - contenxt menu when near the bottom and right margin
+
+fixed
+    - the _page
+    - the cursor when hovering the topbar of pages
+    - switch to new layout in the page according to the terminal
+    - minimyzing a page now has an animation. I atach the previous height as a data attr to the _page div
+    - closing a page now remove the icon  with an animation
+
+features - 
+    - new context menu
+notes :
+     the page is now  called _page

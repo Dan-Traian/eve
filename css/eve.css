@@ -45,47 +45,47 @@
     left: 0%; } }
 @keyframes flicker {
   0% {
-    opacity: 0.93117; }
+    opacity: 0.67478; }
   5% {
-    opacity: 0.62119; }
+    opacity: 0.91164; }
   10% {
-    opacity: 0.26436; }
+    opacity: 0.51552; }
   15% {
-    opacity: 0.39569; }
+    opacity: 0.36999; }
   20% {
-    opacity: 0.97108; }
+    opacity: 0.70724; }
   25% {
-    opacity: 0.05593; }
+    opacity: 0.6412; }
   30% {
-    opacity: 0.0618; }
+    opacity: 0.05862; }
   35% {
-    opacity: 0.7428; }
+    opacity: 0.12159; }
   40% {
-    opacity: 0.72256; }
+    opacity: 0.98575; }
   45% {
-    opacity: 0.61383; }
+    opacity: 0.07085; }
   50% {
-    opacity: 0.23687; }
+    opacity: 0.97968; }
   55% {
-    opacity: 0.34176; }
+    opacity: 0.1874; }
   60% {
-    opacity: 0.74211; }
+    opacity: 0.42933; }
   65% {
-    opacity: 0.30293; }
+    opacity: 0.04889; }
   70% {
-    opacity: 0.91545; }
+    opacity: 0.44958; }
   75% {
-    opacity: 0.49886; }
+    opacity: 0.34771; }
   80% {
-    opacity: 0.77236; }
+    opacity: 0.26433; }
   85% {
-    opacity: 0.18657; }
+    opacity: 0.64126; }
   90% {
-    opacity: 0.76833; }
+    opacity: 0.31891; }
   95% {
-    opacity: 0.68271; }
+    opacity: 0.49459; }
   100% {
-    opacity: 0.27857; } }
+    opacity: 0.7599; } }
 @keyframes glitch {
   0% {
     -moz-transform: skew(-20deg);
@@ -261,11 +261,44 @@ html, body {
   height: 100vh;
   overflow: hidden; }
 
+#right_click_menu {
+  width: 200px;
+  height: auto;
+  border: 1px solid #535353;
+  box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  background-color: #c2bda9;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99; }
+  #right_click_menu section {
+    padding: 10px 0px;
+    border-bottom: 1px solid #b7b29a;
+    color: #5d5842; }
+    #right_click_menu section .meta {
+      font-size: 0.7em;
+      padding: 0px 10px;
+      color: #6c664d;
+      margin-bottom: 5px; }
+    #right_click_menu section .element {
+      font-size: 1em;
+      cursor: pointer;
+      padding: 2px 10px;
+      transition: all 0.1s ease-in-out; }
+      #right_click_menu section .element i {
+        font-size: 0.8em; }
+        #right_click_menu section .element i.left {
+          float: right; }
+      #right_click_menu section .element:hover {
+        color: #040302;
+        background-color: #ada68b; }
+
 input, input:focus {
   outline: none;
   background: transparent; }
 
-.flex, #desktop_container #desktop_screen .page .header .file_icon, #desktop_container #desktop_screen .page .header .window_actions button, #desktop_container #desktop_screen .page .content, #desktop_container #desktop_bar .icons .icon, #desktop_container #desktop_bar .utilities .utilities_icon, #desktop_container #terminal .content #terminal_preloader, #desktop_container #terminal .content #rivescript #conversation .conv_element .index, #desktop_container #terminal .content #glitch {
+.flex, #fluid, #fluid .roid, #fluid .roid .dro, #fluid .romb_container, #desktop_container #desktop_screen ._page .content, #desktop_container #desktop_bar .icons .icon, #desktop_container #desktop_bar .utilities .utilities_icon, #desktop_container #terminal .content #terminal_preloader, #desktop_container #terminal .content #rivescript #conversation .conv_element .index, #desktop_container #terminal .content #glitch {
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -313,6 +346,90 @@ body {
   -webkit-perspective: 1000px;
   perspective: 1000px; }
 
+#draggable_container {
+  position: absolute;
+  top: 0;
+  left: -30vw;
+  width: 160vw;
+  height: 110vh;
+  z-index: -99; }
+
+#fluid {
+  width: 100vw;
+  height: 100vh;
+  background-color: #575757;
+  position: relative; }
+  #fluid .roid {
+    width: 20vw;
+    height: 20vw;
+    background-color: #3f3f3f;
+    transform-origin: center;
+    transform: rotate(45deg);
+    box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 0;
+    animation: reposition 4s ease-in forwards;
+    animation-delay: 7s; }
+    #fluid .roid .dro {
+      width: 5vw;
+      height: 5vw;
+      background-color: #1a1a1a;
+      box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+      transform: scale(0, 0);
+      animation: dro 5s ease-in-out forwards;
+      background-color: white; }
+      #fluid .roid .dro .dot-parent {
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+        transform-origin: left; }
+        #fluid .roid .dro .dot-parent .dot {
+          position: relative;
+          top: -2.5px;
+          left: -2.5px;
+          width: 10px;
+          height: 10px;
+          border-radius: 5px;
+          background-color: white;
+          animation: bleed 5s ease-in-out forwards;
+          animation-delay: 6s; }
+@keyframes bleed {
+  to {
+    width: 50vw; } }
+@keyframes dro {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1); }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2); } }
+  #fluid .romb_container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0; }
+    #fluid .romb_container .romb {
+      position: relative;
+      width: 0;
+      height: 0;
+      top: -1vw;
+      transform: rotate(45deg); }
+      #fluid .romb_container .romb .drogo {
+        width: 0;
+        height: 0;
+        background-color: white;
+        animation: romb 3s ease-in-out forwards;
+        animation-delay: 11s; }
+@keyframes romb {
+  to {
+    width: 10vw;
+    height: 10vw; } }
+@keyframes reposition {
+  to {
+    top: -50vw; } }
 #desktop_container {
   width: 100vw;
   height: 100vh;
@@ -327,61 +444,59 @@ body {
     z-index: 0;
     position: relative;
     padding: 5px; }
-    #desktop_container #desktop_screen .page {
+    #desktop_container #desktop_screen ._page {
       position: absolute;
-      top: 0;
-      left: 0;
-      height: auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #636052;
-      outline: 1px solid rgba(194, 189, 169, 0.2);
-      user-select: none; }
-      #desktop_container #desktop_screen .page .header {
-        position: absolute;
+      border-radius: 6px;
+      background-color: #313131;
+      border: 1px solid black;
+      border-top: 1px solid #5c5c5c;
+      box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.25); }
+      #desktop_container #desktop_screen ._page ::selection {
+        background-color: #14fdce;
+        color: #031e11; }
+      #desktop_container #desktop_screen ._page .topbar {
         width: 100%;
-        height: 25px;
-        background-color: rgba(194, 189, 169, 0.9);
-        display: flex;
         align-items: center;
-        justify-content: flex-start;
-        border-bottom: 1px solid rgba(99, 96, 82, 0.5);
-        opacity: 0.3;
-        transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86); }
-        #desktop_container #desktop_screen .page .header .file_icon {
-          padding-left: 3px;
-          width: 25px;
-          height: 25px;
-          border-right: 1px solid rgba(99, 96, 82, 0.5); }
-        #desktop_container #desktop_screen .page .header .file_name {
-          margin-left: 5px; }
-        #desktop_container #desktop_screen .page .header .window_actions {
-          position: absolute;
-          right: 0;
-          height: 20px; }
-          #desktop_container #desktop_screen .page .header .window_actions button {
-            width: 20px;
-            height: 20px;
-            font-size: 18px;
-            float: left;
-            transition: all 0.2s;
-            color: rgba(99, 96, 82, 0.5); }
-          #desktop_container #desktop_screen .page .header .window_actions button:hover {
-            background-color: rgba(99, 96, 82, 0.5);
-            color: #636052; }
-          #desktop_container #desktop_screen .page .header .window_actions button:active {
-            outline: none; }
-      #desktop_container #desktop_screen .page .content {
+        height: 60px;
+        color: #aaa592;
+        background-color: #292929; }
+        #desktop_container #desktop_screen ._page .topbar .meta {
+          width: 100%;
+          padding: 5px 10px;
+          height: 50%;
+          display: flex;
+          justify-content: space-between; }
+          #desktop_container #desktop_screen ._page .topbar .meta:hover {
+            cursor: move; }
+          #desktop_container #desktop_screen ._page .topbar .meta p i {
+            margin: 0 3px;
+            font-size: 0.7em;
+            padding: 3px 5px;
+            transition: color 0.4s ease-in-out; }
+          #desktop_container #desktop_screen ._page .topbar .meta p.meta_actions i:hover {
+            cursor: pointer;
+            color: white; }
+        #desktop_container #desktop_screen ._page .topbar .menu {
+          width: 100%;
+          height: 50%;
+          padding: 5px 10px;
+          display: flex; }
+          #desktop_container #desktop_screen ._page .topbar .menu p {
+            margin-right: 30px;
+            transition: color 0.4s ease-in-out; }
+            #desktop_container #desktop_screen ._page .topbar .menu p:hover {
+              cursor: pointer;
+              color: white; }
+      #desktop_container #desktop_screen ._page .content {
         width: 100%;
-        margin-top: 24px; }
-        #desktop_container #desktop_screen .page .content img {
-          width: 100%; }
-    #desktop_container #desktop_screen .page:hover .header {
-      opacity: 1; }
-    #desktop_container #desktop_screen .page_focus {
-      outline: 1px solid #c2bda9;
-      box-shadow: 0px 3px 40px 20px rgba(0, 0, 0, 0.25); }
-      #desktop_container #desktop_screen .page_focus .header {
-        opacity: 1; }
+        height: calc( 100% - 70px);
+        margin: 0;
+        padding: 0; }
+        #desktop_container #desktop_screen ._page .content img {
+          width: 100%;
+          height: auto; }
+    #desktop_container #desktop_screen .desktop_item_focus {
+      box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.25); }
     #desktop_container #desktop_screen .file_01 {
       width: 60vw;
       top: 12vh;
@@ -395,17 +510,16 @@ body {
       top: 20vh;
       left: 25vw; }
     #desktop_container #desktop_screen .page_fullscreen {
-      width: 90%;
-      height: 90%;
-      border-width: 0px;
-      left: 5vw;
-      top: 2.5vh; }
-      #desktop_container #desktop_screen .page_fullscreen .content {
-        width: 100%;
-        height: calc(100% - 25px); }
-        #desktop_container #desktop_screen .page_fullscreen .content img {
-          max-height: 100%;
-          max-width: 70%; }
+      width: 100%;
+      height: 100%;
+      left: 0vw !important;
+      top: 0vh !important; }
+      #desktop_container #desktop_screen .page_fullscreen .content img {
+        width: auto;
+        height: auto;
+        min-width: 70%;
+        max-height: 100%;
+        max-width: 70%; }
     #desktop_container #desktop_screen .desktop_app {
       width: 90px;
       height: 80px;
@@ -441,19 +555,31 @@ body {
       align-items: center;
       justify-content: flex-start; }
       #desktop_container #desktop_bar .icons .icon {
-        width: 45px;
-        margin: 0px 3px 0px 3px;
+        width: 35px;
         height: 35px;
         font-size: 20px; }
         #desktop_container #desktop_bar .icons .icon img {
           width: 50%; }
         #desktop_container #desktop_bar .icons .icon i {
           color: #d6c5a9; }
+        #desktop_container #desktop_bar .icons .icon:hover {
+          background-color: rgba(101, 95, 91, 0.9); }
       #desktop_container #desktop_bar .icons .active {
         background-color: rgba(74, 70, 67, 0.9); }
       #desktop_container #desktop_bar .icons .icon_app {
         color: white;
-        border-bottom: 2px solid white; }
+        position: relative; }
+        #desktop_container #desktop_bar .icons .icon_app::after {
+          content: '';
+          position: absolute;
+          left: 5px;
+          top: 0;
+          width: calc(35px - 10px);
+          height: calc(35px - 2px);
+          border-bottom: 2px solid white; }
+          #desktop_container #desktop_bar .icons .icon_app::after:hover {
+            left: 0px;
+            width: 35px; }
     #desktop_container #desktop_bar .utilities {
       width: 40%;
       height: 100%;
@@ -508,46 +634,14 @@ body {
       background-size: 100% 2px, 3px 100%;
       pointer-events: none; }
   #desktop_container #terminal {
-    width: 95%;
-    height: 90%;
-    position: absolute;
+    width: 70%;
+    height: 70%;
     top: 2vh;
     left: 2.5vw;
-    z-index: 20;
-    display: none;
-    border-radius: 6px;
-    background-color: #313131;
-    border: 1px solid black;
-    border-top: 1px solid #5c5c5c;
-    box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.25); }
-    #desktop_container #terminal ::selection {
-      background-color: #14fdce;
-      color: #031e11; }
-    #desktop_container #terminal .topbar {
-      width: 100%;
-      align-items: center;
-      height: 60px;
-      color: #aaa592;
-      background-color: #292929; }
-      #desktop_container #terminal .topbar .actions {
-        width: 100%;
-        padding: 5px 10px;
-        height: 50%;
-        display: flex;
-        justify-content: space-between; }
-        #desktop_container #terminal .topbar .actions p i {
-          margin: 0px 10px;
-          font-size: 0.7em; }
-      #desktop_container #terminal .topbar .menu {
-        width: 100%;
-        height: 50%;
-        padding: 5px 10px;
-        display: flex; }
-        #desktop_container #terminal .topbar .menu p {
-          margin-right: 30px; }
+    display: none; }
     #desktop_container #terminal .content {
-      width: 100%;
-      height: calc( 100% - 70px); }
+      height: calc( 100% - 70px);
+      display: block; }
       #desktop_container #terminal .content #terminal_preloader {
         width: 100%;
         height: 100%;
@@ -609,7 +703,7 @@ body {
             #desktop_container #terminal .content #rivescript #conversation .conv_element span {
               color: #14fdce;
               margin-right: 10px; }
-            #desktop_container #terminal .content #rivescript #conversation .conv_element .content {
+            #desktop_container #terminal .content #rivescript #conversation .conv_element .text {
               min-width: 70%;
               color: #d7d4cb; }
         #desktop_container #terminal .content #rivescript .question {

@@ -22,3 +22,30 @@ function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
 }
+
+
+$("body").contextmenu(function(e){
+    e.preventDefault(); 
+
+    var left= e.pageX;
+    var top = e.pageY;
+    right_click_menu.style.display="block";
+    // console.log(e.pageX , right_click_menu.offsetWidth , window.innerWidth)
+    if(e.pageX + right_click_menu.offsetWidth > window.innerWidth){
+        left = window.innerWidth -right_click_menu.offsetWidth - 5 ; 
+    }
+    // console.log(e.pageY , right_click_menu.offsetHeight , window.innerHeight)
+    if(e.pageY + right_click_menu.offsetHeight > window.innerHeight){
+        top = window.innerHeight - right_click_menu.offsetHeight - 5 - desktop_bar.offsetHeight;
+    }
+    
+    right_click_menu.style.top=top+"px";
+    right_click_menu.style.left=left+"px";
+    
+    
+    right_click_menu.style.opacity="0";
+    $("#right_click_menu").animate({opacity:1},300);
+});
+$("body").mousedown(function(e){
+    right_click_menu.style.display="none";
+});
