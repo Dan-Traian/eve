@@ -4,6 +4,10 @@ $console_color_user: #0b9476;
 $console_bg: #031e11;
 
 
+
+
+
+
 #terminal {
     width: 70%;
     height: 70%;
@@ -12,7 +16,6 @@ $console_bg: #031e11;
     display: none;
     .topbar{
         // its by default from the _page
-        
     }
     .content{
         height: calc( 100% - 70px);
@@ -77,7 +80,6 @@ $console_bg: #031e11;
                 .conv_element{
                     width:100%;
                     display: flex;
-                    align-items: center;
                     color: $console_color;
                     &:nth-child(even){
                         background-color: transparentize($console_bg,0.91);
@@ -85,7 +87,8 @@ $console_bg: #031e11;
                     .index{
                         width: 30px;
                         height: 30px;
-                        @extend .flex;
+                        display: flex;
+                        justify-content: center;
                         color:darken($bgr-grey, 20%);
                         margin-right: 10px;
                     }
@@ -94,7 +97,8 @@ $console_bg: #031e11;
                         margin-right: 10px;                
                     }
                     .text{
-                        min-width: 70%;
+                        min-width: 30%;
+                        max-width:50%;
                         color:lighten($bgr-grey, 20%);
                     }
         

@@ -19,8 +19,8 @@
 - Of course I love you!
 - I love everybody!
 
-+ who do you like
-- I like everybody!
++  *mom*
+-  i dont have a mom
 
 + (thank you|thanks|ty)
 - You are quite welcome.

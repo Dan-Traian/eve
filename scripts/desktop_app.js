@@ -15,6 +15,8 @@ $(".icon_app").click(function(){
 		$(s_file_selector).css("display","block");	
 		var previous_top = $file.attr("data-previous-top");
 		// console.log(previous_top);
+		$("._page").css("z-index", "5").removeClass("desktop_item_focus");
+		$file.css("z-index", "10").addClass("desktop_item_focus");
 		new TimelineMax()
 			.to($file,1,{ease: Power4.easeOut,opacity:1,top:previous_top,scaleX:1,scaleY:1})
 			.timeScale(1);

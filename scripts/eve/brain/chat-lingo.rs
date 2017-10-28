@@ -42,7 +42,7 @@
 - <@>
 
 + afk
-- Alright.
+- Alright. Don't mind me while I wait here.
 
 + (pls|please)
 - Alright - I'll think about it.

@@ -49,3 +49,22 @@ $("body").contextmenu(function(e){
 $("body").mousedown(function(e){
     right_click_menu.style.display="none";
 });
+
+
+// vaporwave course
+var horzs = vaporwave.querySelectorAll(".horz");
+var speed = 1;
+var max_height = $("#vaporwave .container").height();
+setInterval(function(){
+    for(var i=0;i<horzs.length;i++){
+        var current_top = horzs[i].offsetTop;
+        console.log(current_top);
+        current_top+=speed;
+        if(current_top>max_height){
+            current_top=0;
+        }
+        horzs[i].style.top = current_top+"px";
+
+    }
+    // console.log(1);
+},100)
